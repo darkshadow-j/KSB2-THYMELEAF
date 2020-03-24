@@ -37,7 +37,7 @@ public class CarService implements CarServiceInt {
     }
 
     @Override
-    public boolean DeleteCarByID(long id) {
+    public boolean deleteCarByID(long id) {
         Optional<Car> carf = carList.stream().filter(car -> car.getId() == id).findFirst();
         if (carf.isPresent()) {
             carList.remove(carf.get());
@@ -47,13 +47,13 @@ public class CarService implements CarServiceInt {
     }
 
     @Override
-    public boolean AddCar(Car car) {
-        carList.add(new Car(this.getLastID() + 1, car.getMark(), car.getModel()));
-        return true;
+    public boolean addcar(Car car) {
+        car.setId(this.getLastID()+1);
+        return carList.add(car);
     }
 
     @Override
-    public boolean EditCar(Car editcar) {
+    public boolean editCar(Car editcar) {
         Optional<Car> carf = carList.stream().filter(car -> car.getId() == editcar.getId()).findFirst();
         if (carf.isPresent()) {
             if (!editcar.getMark().equals("")) {

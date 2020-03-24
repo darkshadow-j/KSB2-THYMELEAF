@@ -19,7 +19,7 @@ public class MainController {
     }
 
     @GetMapping("/")
-    public String Home(Model model) {
+    public String home(Model model) {
         model.addAttribute("cars", carService.getCarList());
         model.addAttribute("newCar", new Car());
         model.addAttribute("editCar", new Car());
@@ -28,21 +28,21 @@ public class MainController {
 
 
     @PostMapping("/delete-car")
-    public String DeleteCar(@RequestParam long id) {
-        carService.DeleteCarByID(id);
+    public String deleteCar(@RequestParam long id) {
+        carService.deleteCarByID(id);
         return "redirect:/";
     }
 
     @PostMapping("/add-car")
-    public String AddCar(@ModelAttribute Car newCar) {
+    public String addCar(@ModelAttribute Car newCar) {
         System.out.println("add : " + newCar);
-        carService.AddCar(newCar);
+        carService.addcar(newCar);
         return "redirect:/";
     }
 
     @PostMapping("edit-car")
-    public String EditCar(@ModelAttribute Car editcar) {
-        if (carService.EditCar(editcar)) {
+    public String editCar(@ModelAttribute Car editcar) {
+        if (carService.editCar(editcar)) {
             return "redirect:/";
         }
         return "error";
