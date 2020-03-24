@@ -40,8 +40,7 @@ public class CarService implements CarServiceInt {
     public boolean deleteCarByID(long id) {
         Optional<Car> carf = carList.stream().filter(car -> car.getId() == id).findFirst();
         if (carf.isPresent()) {
-            carList.remove(carf.get());
-            return true;
+            return carList.remove(carf.get());;
         }
         return false;
     }
