@@ -4,8 +4,9 @@ import pl.pawel.ksb2thymeleaf.model.Car;
 
 public interface CarServiceInt {
 
-    public boolean deleteCarByID(long id);
-    public boolean addcar(Car car);
-    public boolean editCar(Car editcar);
+     boolean deleteCarByID(long id);
+     boolean addcar(Car car);
+     boolean editCar(Car editcar);
 
 }
+

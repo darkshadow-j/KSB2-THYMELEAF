@@ -9,6 +9,7 @@ import pl.pawel.ksb2thymeleaf.service.CarService;
 
 
 @Controller
+@RequestMapping("/")
 public class MainController {
 
     private CarService carService;
@@ -18,7 +19,7 @@ public class MainController {
         this.carService = carService;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public String home(Model model) {
         model.addAttribute("cars", carService.getCarList());
         model.addAttribute("newCar", new Car());
